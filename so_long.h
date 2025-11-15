@@ -6,7 +6,7 @@
 /*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:25:59 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/11/15 21:43:15 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/15 22:20:40 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ typedef struct s_game
 	t_map	*s_map;
 }	t_game;
 
-
 int		validate_map(t_map *s_map, t_game *s_game);
 void	get_direction(int keycode, t_game *s_game);
-void	show_in_window(t_game *s_game, void *mlx_ptr);
-int		ft_exit(int status);
+void	show_in_window(t_game *s_game);
+int		ft_exit(int status, t_game *s_game);
+int		check_map_element(t_map *s_map, int y);
+void	texture_check(t_game *s_game, void *mlx_ptr);
