@@ -6,7 +6,7 @@
 /*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:25:40 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/10/09 18:22:25 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:00:05 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (start >= ft_strlen(s))
+	if (start >= (unsigned int)ft_strlen(s))
 		return (ft_strdup(""));
 	sub_len = ft_strlen(s) - start;
 	if (sub_len > len)

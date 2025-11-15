@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgumienn <mgumienn@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:25:59 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/11/15 15:28:57 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:47:44 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 typedef struct s_point
 {
-    int x;
-    int y;
-}   t_point;
+	int	x;
+	int	y;
+}	t_point;
 
 typedef struct s_map
 {
@@ -31,6 +31,6 @@ typedef struct s_map
 	int		collectibles;
 	t_point	exit;
 	char	*file_name;
-}               t_map;
+}	t_map;
 
-int	validate_map(char *map_file);
+int	validate_map(t_map *s_map);
