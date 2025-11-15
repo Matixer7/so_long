@@ -1,0 +1,107 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgumienn <mgumienn@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/16 16:25:21 by mgumienn          #+#    #+#             */
+/*   Updated: 2025/11/15 14:52:05 by mgumienn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line.h"
+
+void	ft_trim(char **line, char **f_content)
+{
+	size_t	i;
+	char	*new_content;
+
+	i = 0;
+	while ((*f_content)[i] != '\n')
+		i++;
+	*line = malloc(i + 2);
+	if (!*line)
+		return ;
+	ft_strlcpy_gnl(line, *f_content, i + 2);
+	if ((*f_content)[i + 1])
+	{
+		new_content = ft_strdup_gnl(&(*f_content)[i + 1]);
+		free(*f_content);
+		*f_content = new_content;
+	}
+	else
+	{
+		free(*f_content);
+		*f_content = NULL;
+	}
+}
+
+char	*ft_read(int fd, char **f_content, char **line)
+{
+	long	rd;
+	char	*buffer;
+	size_t	i;
+
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		return (free(buffer), NULL);
+	rd = read(fd, buffer, BUFFER_SIZE);
+	if (rd <= 0)
+		return (free(buffer), NULL);
+	buffer[rd] = '\0';
+	i = 0;
+	while (buffer[i] && buffer[i] != '\n')
+		*line = ft_strjoinc(*line, buffer[i++]);
+	if (buffer[i] && buffer[i] == '\n')
+	{
+		*line = ft_strjoinc(*line, buffer[i++]);
+		if (buffer[i] && *f_content)
+			free(*f_content);
+		if (buffer[i])
+			*f_content = ft_strdup_gnl(&buffer[i]);
+		return (free(buffer), *line);
+	}
+	return (free(buffer), ft_read(fd, f_content, line));
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*f_content;
+	char		*line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	line = NULL;
+	if (f_content && !ft_strchr_gnl(f_content, '\n'))
+	{
+		line = ft_strdup_gnl(f_content);
+		free(f_content);
+		f_content = NULL;
+	}
+	if (f_content && ft_strchr_gnl(f_content, '\n') && !line)
+		ft_trim(&line, &f_content);
+	if (f_content && line)
+		return (line);
+	if (!f_content)
+		ft_read(fd, &f_content, &line);
+	if (line == NULL && f_content)
+		free(f_content);
+	return (line);
+}
+
+//#include "stdio.h"
+// int main()
+// {
+// 	//int fd = open("", O_RDONLY);
+// 	char *line;
+// 	int fd = 1000;
+//
+// 	while ((line = get_next_line(fd)))
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	close(fd);
+// 	return (0);
+// }
