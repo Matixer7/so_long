@@ -6,7 +6,7 @@
 /*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:12:52 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/11/15 22:36:50 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/16 12:28:56 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	main(void)
 	s_game.moves = 0;
 	s_map.file_name = "map.ber";
 	if (validate_map(&s_map, &s_game) == -1)
-		ft_printf("Map validation failed\n");
+		return (ft_printf("Map validation failed\n"), ft_exit(0, &s_game));
+	flood_verify(&s_game, &s_map);
 	s_game.mlx_ptr = mlx_init();
 	s_game.win_ptr = mlx_new_window(s_game.mlx_ptr,
 			s_map.width * 64, s_map.height * 64, "gernig");

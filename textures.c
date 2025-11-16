@@ -6,7 +6,7 @@
 /*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 22:03:58 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/11/15 22:14:35 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/16 12:23:28 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	show_in_window(t_game *s_game)
 
 void	texture_check(t_game *s_game, void *mlx_ptr)
 {
-	int	tile;
+	int		tile;
 
 	tile = 64;
 	s_game->wall_txt = mlx_xpm_file_to_image(mlx_ptr, WALL, &tile, &tile);
