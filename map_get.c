@@ -6,7 +6,7 @@
 /*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:22:31 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/11/16 17:11:07 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/16 19:55:08 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ int	get_map(int map_fd, char *map_file, t_map *s_map, t_game *s_game)
 		tmp = ft_strjoin(lines, line);
 		free(lines);
 		if (!tmp)
-		{
-			free(line);
-			return (-1);
-		}
+			return (free(line), -1);
 		lines = tmp;
 		free(line);
 		line = get_next_line(map_fd);

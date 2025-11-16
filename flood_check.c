@@ -6,7 +6,7 @@
 /*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:29:57 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/11/16 19:37:05 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/16 19:55:49 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void	flood_verify(t_game *s_game, t_map *s_map)
 	x = s_map->player.x;
 	y = s_map->player.y;
 	flood_fill(s_map, x, y);
-	if (s_map->found_coins != s_map->collectibles || s_map->collectibles == 0 ||
-		s_map->found_exits != 1)
+	if (s_map->found_coins != s_map->collectibles || s_map->collectibles == 0
+		|| s_map->found_exits != 1)
 	{
-		ft_printf("Map validation2 failed\n");
+		ft_printf("Map validation failed\n");
 		ft_exit(0, s_game);
 	}
 }

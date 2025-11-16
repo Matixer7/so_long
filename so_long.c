@@ -6,7 +6,7 @@
 /*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:12:52 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/11/16 19:34:19 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/16 19:50:53 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	main(int argc, char **argv)
 	flood_verify(&s_game, &s_map);
 	s_game.mlx_ptr = mlx_init();
 	s_game.win_ptr = mlx_new_window(s_game.mlx_ptr,
-			s_map.width * 64, s_map.height * 64, "gernig");
+			s_map.width * 64, s_map.height * 64, "So Long My Friend");
 	ft_printf("Map validated: width=%d height=%d collectibles=%d\n",
 		s_map.width, s_map.height, s_map.collectibles);
 	texture_check(&s_game, s_game.mlx_ptr);
