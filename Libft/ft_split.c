@@ -6,7 +6,7 @@
 /*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:23:58 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/10/07 19:44:14 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/16 16:04:34 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static size_t	count_words(const char *s, char c)
 	return (count);
 }
 
-static void	free_all(char **result)
+void	ft_free_all(char **result)
 {
 	int	i;
 
@@ -104,7 +104,7 @@ char	**ft_split(char const *s, char c)
 		strs[i] = splitter(s, c, &pos);
 		if (!strs[i])
 		{
-			free_all(strs);
+			ft_free_all(strs);
 			return (NULL);
 		}
 		i++;

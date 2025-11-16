@@ -6,7 +6,7 @@
 /*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 19:38:10 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/11/15 22:20:24 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/16 19:38:07 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	player_move(t_game *s_game, t_map *s_map, int y, int x)
 	py = s_map->player.y;
 	if (s_game->map[py + y][px + x] == '1')
 		return ;
-	s_game->moves++;
 	if (s_game->map[py + y][px + x] == 'C')
 	{
 		s_game->points++;
@@ -38,11 +37,12 @@ void	player_move(t_game *s_game, t_map *s_map, int y, int x)
 		if (s_game->map[py + y][px + x] == 'E')
 			if (ft_printf("Game finished with %d moves!\n", s_game->moves) > 0)
 				ft_exit(0, s_game);
-	if (s_game->points == s_map->collectibles)
+	if (s_game->points != s_map->collectibles)
 		if (s_game->map[py + y][px + x] == 'E')
 			return ;
 	s_game->map[py][px] = '0';
 	s_game->map[py + y][px + x] = 'P';
+	s_game->moves++;
 	change_player_position(s_game, s_map, y, x);
 	show_in_window(s_game);
 }
@@ -57,4 +57,6 @@ void	get_direction(int keycode, t_game *s_game)
 		player_move(s_game, s_game->s_map, 0, -1);
 	if (keycode == 100)
 		player_move(s_game, s_game->s_map, 0, 1);
+	if (keycode == 65307)
+		ft_exit(0, s_game);
 }
