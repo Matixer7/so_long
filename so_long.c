@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgumienn <mgumienn@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:12:52 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/11/16 19:50:53 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/18 18:32:47 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 		s_map.file_name = argv[1];
 	else
-		return (ft_printf("No map file given\n"), 0);
+		return (ft_putstr_fd("Error\n", 2), ft_printf("No map file given\n"), 0);
 	if (validate_map(&s_map, &s_game) == -1)
-		return (ft_printf("Map validation failed\n"), ft_exit(0, &s_game));
+		return (ft_putstr_fd("Error\nMap validation failed\n", 2), ft_exit(0, &s_game));
 	flood_verify(&s_game, &s_map);
 	s_game.mlx_ptr = mlx_init();
 	s_game.win_ptr = mlx_new_window(s_game.mlx_ptr,
