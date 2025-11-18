@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
 
 # Source Files (all .c files in the current directory)
-SRCS = $(wildcard *.c)
+SRCS = so_long.c map_get.c moving.c flood_check.c textures.c check_map_elements.c
 
 # Object Files
 OBJS = $(SRCS:.c=.o)
