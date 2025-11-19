@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgumienn <mgumienn@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:12:52 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/11/18 18:32:47 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/19 17:05:50 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	error_msg(int status, t_game *s_game)
+{
+	if (status == 1)
+		ft_putstr_fd("Error\nNo map file given\n", 2);
+	if (status == 2)
+		ft_putstr_fd("Error\nMap validation failed\n", 2);
+	ft_exit(0, &s_game);
+}
 
 int	ft_exit(int status, t_game *s_game)
 {
@@ -64,9 +73,9 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 		s_map.file_name = argv[1];
 	else
-		return (ft_putstr_fd("Error\n", 2), ft_printf("No map file given\n"), 0);
+		return (error_msg(1, &s_game), 0);
 	if (validate_map(&s_map, &s_game) == -1)
-		return (ft_putstr_fd("Error\nMap validation failed\n", 2), ft_exit(0, &s_game));
+		return (error_msg(2, &s_game), 0);
 	flood_verify(&s_game, &s_map);
 	s_game.mlx_ptr = mlx_init();
 	s_game.win_ptr = mlx_new_window(s_game.mlx_ptr,
