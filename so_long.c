@@ -6,7 +6,7 @@
 /*   By: mgumienn <mgumienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:12:52 by mgumienn          #+#    #+#             */
-/*   Updated: 2025/11/19 17:05:50 by mgumienn         ###   ########.fr       */
+/*   Updated: 2025/11/21 16:08:00 by mgumienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	error_msg(int status, t_game *s_game)
 		ft_putstr_fd("Error\nNo map file given\n", 2);
 	if (status == 2)
 		ft_putstr_fd("Error\nMap validation failed\n", 2);
-	ft_exit(0, &s_game);
+	ft_exit(0, s_game);
 }
 
 int	ft_exit(int status, t_game *s_game)
